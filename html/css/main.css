@@ -1,0 +1,25 @@
+div.variables {
+   margin: 1em;
+
+}
+
+div.variables .const {
+   width: 40%;
+   display: inline-block;
+   float: left;
+}
+
+div.variables .vars {
+   width: 40%;
+   display: inline-block;
+   float: right;
+}
+
+div.charts {
+   border-top: gray 1px solid;
+}
+
+div#interval {
+   width: 11%;
+   margin: 1em;
+}

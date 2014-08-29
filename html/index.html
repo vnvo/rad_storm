@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/static/css/main.css">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <script>window.html5 || document.write('<script src="/static/js/vendor/html5shiv.js"><\/script>')</script>
+    <![endif]-->
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <div id="content">
+      <div class="variables">
+        <dl class="dl-horizontal const">
+          {% for item, value in config.items() %}
+          {% if item.isupper() and item not in ['DICT'] %}
+          <dt class="text-primary">{{ item.replace('_', ' ').capitalize() }}</dt>
+          <dd>{{ value }}</dd>
+          {% endif %}
+          {% endfor %}
+        </dl>
+        <dl class="dl-horizontal vars">
+          <dt class="text-primary">Running Time: </dt><dd id="runningTime">
+              <span class="hour">00</span>:<span class="minute">00</span>:<span class="second">00</span>
+          </dd>
+          <dt class="text-primary">Auth Timeout Count</dt><dd id="authTimeoutCount"><span>0</span></dd>
+          <dt class="text-primary">Auth Delay Max: </dt><dd id="authDelayMax"><span>0</span> seconds</dd>
+          <dt class="text-primary">Auth Delay Min: </dt><dd id="authDelayMin"><span>0</span> seconds</dd>
+          <dt class="text-primary">Auth Delay Avg: </dt><dd id="authDelayAvg"><span>0</span> seconds</dd>
+
+          <dt class="text-primary">Accounting Timeout Count: </dt><dd id="accountingTimeoutCount"><span>0</span></dd>
+          <dt class="text-primary">Accounting Delay Max: </dt><dd id="accountingDelayMax"><span>0</span> seconds</dd>
+          <dt class="text-primary">Accounting Delay Min: </dt><dd id="accountingDelayMin"><span>0</span> seconds</dd>
+          <dt class="text-primary">Accounting Delay Avg: </dt><dd id="accountingDelayAvg"><span>0</span> seconds</dd>
+
+          <dt class="text-primary">Request Count: </dt><dd id="requestCount"><span>0</span></dd>
+        </dl>
+        <div class="input-group" id="interval">
+        <input type="text" class="form-control" placeholder="Text input" value="1">
+        <span class="input-group-addon">seconds</span></div>
+        <div class="btn-group btn-group-lg">
+          <button type="button" class="btn btn-success" id="start">Start</button>
+          <button type="button" class="btn btn-danger" id="stop">Stop</button>
+        </div>
+
+      </div>
+      <div class="clearfix">...</div>
+      <div class="charts">
+        <div id="authDelayAvgChart" style="width:100%; height:400px;"></div>
+        <div id="authTimeoutChart" style="width:100%; height:400px;"></div>
+        <div id="authDelayPeriodChart" style="width:100%; height:400px;"></div>
+
+        <div id="accountingDelayAvgChart" style="width:100%; height:400px;"></div>
+        <div id="accountingTimeoutChart" style="width:100%; height:400px;"></div>
+        <div id="accountingDelayPeriodChart" style="width:100%; height:400px;"></div>
+
+        <div id="rejectCodesChart" style="width:100%; height:400px;"></div>
+      </div>
+    </div>
+
+    </div> <!-- /container -->       <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> -->
+    <script>window.jQuery || document.write('<script src="/static/js/vendor/jquery-1.11.0.min.js"><\/script>')</script>
+
+    <script src="/static/js/vendor/bootstrap.min.js"></script>
+    <script src="/static/js/highcharts/highcharts.js"></script>
+    <script src="/static/js/highcharts/exporting.js"></script>
+    <script src="/static/js/highcharts/no-data-to-display.js"></script>
+    <script src="/static/js/highcharts/defaults.js"></script>
+
+    <script src="/static/js/highcharts/svg2png/rgbcolor.js"></script>
+    <script src="/static/js/highcharts/svg2png/StackBlur.js"></script>
+    <script src="/static/js/highcharts/svg2png/canvg.js"></script>
+    <script src="/static/js/highcharts/svg2png/svg_todataurl.js"></script>
+
+    <script src="/static/js/timer.js"></script>
+    <script src="/static/js/main.js"></script>
+  </body>
+</html>
